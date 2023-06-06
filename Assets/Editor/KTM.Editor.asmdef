@@ -1,0 +1,16 @@
+{
+    "name": "KTM.Editor",
+    "rootNamespace": "KTM.Editor",
+    "references": [
+        "GUID:cfcb60290a305f744b29a2d06c8be6f4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
