@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace KTM
 {
-    public class KTilemap : MonoBehaviour
+    public class KTM : MonoBehaviour
     {
+        [SerializeField] KTilemapReference tilemapReference;
     }
 }
