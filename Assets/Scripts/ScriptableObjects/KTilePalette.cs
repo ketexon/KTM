@@ -12,6 +12,7 @@ namespace KTM
     public class KTilePalette : ScriptableObject
     {
         public List<KTilePaletteLayer> Layers = new();
+        public List<string> LayerNames = new();
 
         public Vector2Int TileSize = new(32, 32);
     }

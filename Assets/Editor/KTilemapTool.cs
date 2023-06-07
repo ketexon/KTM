@@ -9,10 +9,18 @@ namespace KTM.Editor {
     [EditorTool("KTM", typeof(KTM))]
     public class KTilemapTool : EditorTool
     {
-        public KTM KTM => Selection.GetFiltered<KTM>(SelectionMode.TopLevel)[0];
+        public static KTM KTM { 
+            get {
+                var KTMs = Selection.GetFiltered<KTM>(SelectionMode.TopLevel);
+                if (KTMs.Length > 0) return KTMs[0];
+                return null;
+            }
+        }
         public List<RectInt> Selected => selected;
 
         public static System.Action<KTilemapTool> SelectedEvent;
+        public static System.Action<KTilemapTool> ActivatedEvent;
+        public static System.Action<KTilemapTool> DeactivatedEvent;
 
         Color GridColor => new Color(1f, 0f, 0f, 0.2f);
         Color SelectColor => Color.white;
@@ -24,6 +32,22 @@ namespace KTM.Editor {
         Vector2Int? selectionStart = null;
         Vector2Int? selectionEnd = null;
 
+
+        public override void OnActivated()
+        {
+            base.OnActivated();
+
+            KTilemapInspector.Get(focus: true);
+            ActivatedEvent?.Invoke(this);
+        }
+
+
+        public override void OnWillBeDeactivated()
+        {
+            base.OnWillBeDeactivated();
+
+            DeactivatedEvent?.Invoke(this);
+        }
 
         void DrawGrid(Vector3 min, Vector3 max)
         {
@@ -98,7 +122,7 @@ namespace KTM.Editor {
                 DrawGrid(min, max);
             }
 
-            if (evt.type == EventType.MouseDrag)
+            if (evt.type == EventType.MouseDrag && evt.button == 0)
             {
 
                 if(mousePosGrid != selectionEnd)
@@ -121,7 +145,7 @@ namespace KTM.Editor {
                 }
             }
 
-            if (evt.type == EventType.MouseDown)
+            if (evt.type == EventType.MouseDown && evt.button == 0)
             {
                 selected.Clear();
                 selected.Add(new RectInt(mousePosGrid, Vector2Int.one));
@@ -133,13 +157,9 @@ namespace KTM.Editor {
                 Repaint(window);
             }
 
-            if(evt.type == EventType.MouseUp)
+            if(evt.type == EventType.MouseUp && evt.button == 0)
             {
                 OnSelect();
-            }
-
-            if (evt.type == EventType.MouseMove)
-            {
             }
         }
 

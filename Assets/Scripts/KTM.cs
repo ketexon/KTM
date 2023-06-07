@@ -6,6 +6,6 @@ namespace KTM
 {
     public class KTM : MonoBehaviour
     {
-        [SerializeField] KTilemapReference tilemapReference;
+        [SerializeField] KTilemap tilemap;
     }
 }

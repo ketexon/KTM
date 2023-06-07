@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d60957ae078216419487c2bb6ac38f9, type: 3}
-  m_Name: ExampleTilePalette
+  m_Script: {fileID: 11500000, guid: 06d31b774aa9a2149b8ac1081e181743, type: 3}
+  m_Name: Tilemap
   m_EditorClassIdentifier: 
-  Layers:
-  - Texture: {fileID: 2800000, guid: c868f03bb34f5df469b6e2636d93e0eb, type: 3}
-  LayerNames:
-  - New Layer
-  TileSize: {x: 32, y: 32}
+  Palette: {fileID: 11400000, guid: 2b8436d89be99db4ab8e50c4c745225f, type: 2}
+  Tiles: []

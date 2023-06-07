@@ -13,13 +13,17 @@ namespace KTM
         public Vector2Int TileIndex;
     }
 
-    [System.Serializable]
-    public class KTilemap
+    [CreateAssetMenu(
+        fileName = "Tilemap", 
+        menuName = "KTM/Tilemap", 
+        order = 121
+    )]
+    public class KTilemap : ScriptableObject
     {
         [SerializeField]
-        KTilePalette palette;
+        public KTilePalette Palette;
             
         [SerializeField]
-        List<KTile> tiles;
+        public List<KTile> Tiles;
     }
 }
